@@ -48,7 +48,7 @@ console.log(process.cwd()); // 就是当前文件所在目录
 process.chdir('../'); // 向上移动了一层
 // 如果要读取要读取某个文件，如果当前目录下没有，就去上级目录找
 var fs = require('fs');
-console.log(fs.readFileSync('a.txt')); // 报错，因为在上级目录没有a.txt
+//console.log(fs.readFileSync('a.txt')); // 报错，因为在上级目录没有a.txt
 
 
 // 控制进程本身
