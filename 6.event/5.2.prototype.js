@@ -98,4 +98,5 @@ console.log(Dog.prototype.name);
 console.log(dog.__proto__.name);
 console.log(dog.__proto__.__proto__.name); // dog原型链上的proto指向Object的原型链
 console.log(dog.__proto__.constructor.prototype.name);
+console.log(dog.__proto__.constructor.name);
 console.log(Dog.name);
