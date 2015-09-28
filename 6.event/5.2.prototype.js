@@ -39,7 +39,7 @@ function Animal(name , food) {
 
 Animal.prototype.food = 'meat';
 Animal.prototype.eat = function () {
-    console.log('I an eating ' + this.food);
+    console.log('I am eating ' + this.food);
 };
 
 var tiger = new Animal('tiger');
@@ -98,3 +98,4 @@ console.log(Dog.prototype.name);
 console.log(dog.__proto__.name);
 console.log(dog.__proto__.__proto__.name); // dog原型链上的proto指向Object的原型链
 console.log(dog.__proto__.constructor.prototype.name);
+console.log(Dog.name);
