@@ -77,3 +77,24 @@ a();
  * Function.prototype 是所有函数的祖先
  *
  */
+
+
+// 构造函数（也是个对象）
+function Dog(){
+
+}
+// Object 的原型上添加属性
+Object.prototype.name = 'object';
+// Dog 的原型上添加属性
+Dog.prototype.name = '小哈';
+
+var obj = new Object();
+var dog = new Dog();
+
+// 自身没有这个属性，找原型上的属性
+console.log(obj.name);
+console.log(dog.name);
+console.log(Dog.prototype.name);
+console.log(dog.__proto__.name);
+console.log(dog.__proto__.__proto__.name); // dog原型链上的proto指向Object的原型链
+console.log(dog.__proto__.constructor.prototype.name);
