@@ -15,7 +15,7 @@ util.inherits(Person, EventEmitter);
 // Person的实例就拥有EventEmitter的方法了
 var me = new Person('xhy');
 
-me.on('饿了', eat);
+me.on('饿了', eat1);
 me.on('饿了', deprecated);
 
 me.addListener('渴了', drink);
@@ -24,8 +24,8 @@ me.once('love',function(){
     console.log('结婚');
 });
 
-function eat() {
-    console.log('吃饭');
+function eat1() {
+    console.log('回家吃饭');
 }
 
 function deprecated () {
@@ -40,10 +40,11 @@ me.emit('饿了');
 me.emit('渴了');
 me.emit('love');
 
-me.removeListener('饿了',eat);
+me.removeListener('饿了',eat1);
 console.log(me.listeners('饿了').length);
 me.emit('饿了');
 console.log('second time to love');
 me.emit('love');
 console.log('second time to love');
 
+me.removeAllListeners('love');
