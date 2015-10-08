@@ -1,0 +1,55 @@
+/**
+ * 写入流的流程
+ */
+var fs = require('fs');
+
+var fileName1 = 'msg1.txt';
+var fileName2 = 'msg2.txt';
+var fileName3 = 'msg3.txt';
+
+var ws1  = fs.createWriteStream(fileName1);
+
+var count = 100000;
+for(var i=0;i<count;i++) {
+    var flag = ws1.write(i.toString()); // 是否成功写入
+    console.log(flag);
+}
+
+/**
+ * 当写入速度跟不上程序处理速度，WriteStream会把滞后的数据放入缓冲区，然后再从缓冲区取数据继续写入
+ * 当缓冲区的数据排干，就触发drain事件
+ */
+ws1.on('drain',function(){
+    console.log('缓存区中的数据全部输出');
+});
+
+ws1.on('error',function(err){
+    console.log(err);
+});
+
+ws1.write('123');
+ws1.end('123'); // fs.close()
+ws1.write('456');
+
+// ------------
+// 复制文件
+var read  = fs.createReadStream(fileName2);
+var write  = fs.createWriteStream(fileName3);
+read.on('data',function(data){
+    var flag = write.write(data);
+    if(!flag){
+        read.pause();
+    }
+});
+read.on('end',function(){
+    write.end();
+});
+write.on('drain',function(){
+    read.resume();
+});
+
+
+// -------
+// 复制文件这件事儿，一个pipe()搞定了
+
+read.pipe(write);
