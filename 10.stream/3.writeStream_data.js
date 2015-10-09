@@ -69,7 +69,7 @@ write.on('drain',function(){
 });
 
 
-// -------
+// *************
 // 复制文件这件事儿，一个pipe()搞定了
 
 //read.pipe(write);
