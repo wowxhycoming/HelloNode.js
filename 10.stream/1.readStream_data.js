@@ -27,12 +27,20 @@
  *  path 文件路径
  *  [options] 选项，例：{flags:w, start:3, end:8}
  *      fd 文件索引 可空
- *      flags 打开方式 w r w+ r+ xw xr
+ *      flags 打开方式 w r w+ r+ xw xr a
  *      mode 文件权限
  *      start 文件的起始位置
  *      end 文件的结束位置
  *          *** 这里注意，一般结束坐标是不包含结束字符的，但是只有这个方法的结束坐标包含结束字符，所以结束坐标是常规值-1
  *      autoClose  是否自动关闭
+ */
+
+/**
+ * 常用的可读流
+ *  fs.ReadStream 读取文件流
+ *  http.IncomingMessage 客户端请求对象
+ *  net.Socket TCP客户端
+ *  gzip deflate 数据压缩流
  */
 
 var fs = require('fs');
