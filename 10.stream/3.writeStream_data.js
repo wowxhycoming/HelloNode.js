@@ -33,7 +33,10 @@ ws1.write('456');*/
 
 // ------------
 // 复制文件 让fileName2文件中预先有数据  fs.writeFile(fileName2, new Buffer( 10 * 64 * 1024));
-var read  = fs.createReadStream(fileName2);
+// 如果ReadStream每次读取数据的大小和缓冲区大小都是默认值64*1024， 那么会发生9次drain事件
+
+// ReadStream每次读取的数据越小，延迟写入文件数据的缓冲区交换就会越频繁，发生写满再排干次数就会越少
+var read  = fs.createReadStream(fileName2, {highWaterMark : 2 * 1024});
 var write  = fs.createWriteStream(fileName3, {flags : 'a'}); // 追加写入
 
 /*
