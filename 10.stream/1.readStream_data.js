@@ -23,7 +23,7 @@
  * 流动模式 迫使操作系统尽快读出数据，
  * 非流动模式  需要通过代码去读取
  *
- * ReadStream 继承 Readable 继承 Stream
+ * ReadStream 继承自 Readable 继承自 Stream
  *  path 文件路径
  *  [options] 选项，例：{flags:w, start:3, end:8}
  *      fd 文件索引 可空
