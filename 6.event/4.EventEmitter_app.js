@@ -16,6 +16,9 @@ util.inherits(Person, EventEmitter);
 var me = new Person('xhy');
 
 me.on('饿了', eat1);
+me.on('饿了', function(data){
+    console.log(data);
+});
 me.on('饿了', deprecated);
 
 me.addListener('渴了', drink);
@@ -36,7 +39,8 @@ function drink() {
     console.log('喝水');
 }
 
-me.emit('饿了');
+// 发射事件的第二个参数 是 监听函数的参数
+me.emit('饿了', '七彩龙虾');
 me.emit('渴了');
 me.emit('love');
 

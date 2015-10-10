@@ -1,6 +1,7 @@
 var fs = require('fs');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
+
 util.inherits(LineReader,EventEmitter);
 var RETURN = 0x0d;//回车 ascii \r 13
 var NEWLINE = 0x0a;//换行 ascii \n 10
@@ -18,7 +19,7 @@ function LineReader(path){
                 var buff;
                 while(null != (buff = this.read(1))){
                     if(buff[0] == RETURN){// \r\n
-                        this.read(1);
+                        this.read(1); // 读取 \n
                         self.emit('newLine',Buffer.concat(line).toString());
                         line = [];
                     }else{
@@ -37,7 +38,7 @@ function LineReader(path){
 //当有新的 newListener
 
 var reader = new LineReader();
-reader._rs = fs.createReadStream('./pwd.txt');
+reader._rs = fs.createReadStream('msg1.txt');
 reader.on('newLine',function(data){
     console.log(data);
 });
