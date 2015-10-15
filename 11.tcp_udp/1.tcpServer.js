@@ -16,7 +16,7 @@ var server = net.createServer();
 
 server.on('connection', function(socket){
     // socket 继承了 Duplex ， 是一个可读可写的双工流（Readable、Writable）
-    //console.log(socket);
+    // console.log(socket);
     console.log('connected');
 
     // 设置字符集（buffer转成字符串）

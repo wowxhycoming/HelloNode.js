@@ -9,7 +9,7 @@ function serverProcess(req,res) {
 
     var url = req.url;
     console.log(url);
-    // Èç¹û·ÃÎÊÎª  http://127.0.0.1:8080/a/b/c/s/d/d/g/a/s  £¬ Êä³ö  /a/b/c/s/d/d/g/a/s
+    // å¦‚æžœè®¿é—®ä¸º  http://127.0.0.1:8080/a/b/c/s/d/d/g/a/s  ï¼Œ è¾“å‡º  /a/b/c/s/d/d/g/a/s
 
 
     res.end("nice");
