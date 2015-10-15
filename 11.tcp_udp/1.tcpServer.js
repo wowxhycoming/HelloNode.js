@@ -8,6 +8,7 @@ var util = require('util');
 
 var count =0;
 var out = fs.createWriteStream('./tcp'+count+'.txt');
+// 当socket关闭的时候，查看 WriteStream 的状态
 out.on('finish',function(){
     console.log('finished');
 });
