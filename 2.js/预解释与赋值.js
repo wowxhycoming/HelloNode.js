@@ -4,32 +4,32 @@
 
 var http = require('http');
 
-// ·½Ê½1
+// æ–¹å¼1
 var server = http.createServer(function(req,res) {
     res.end("nice");
 });
 
-// http://127.0.0.1:8080/ ¿ÉÒÔ·ÃÎÊ
+// http://127.0.0.1:8080/ å¯ä»¥è®¿é—®
 server.listen(8080,'127.0.0.1');
 
-// ·½Ê½2
+// æ–¹å¼2
 var server2 = http.createServer(server2Process);
 
-// var»áÔ¤½âÊÍ£¬µ«ÊÇ²»»á¸³Öµ
+// varä¼šé¢„è§£é‡Šï¼Œä½†æ˜¯ä¸ä¼šèµ‹å€¼
 var server2Process = function(req,res) {
     res.end("nice 2");
 }
 
-// http://127.0.0.1:8081/ ÎŞ·¨·ÃÎÊ
+// http://127.0.0.1:8081/ æ— æ³•è®¿é—®
 server2.listen(8081,'127.0.0.1');
 
-// ·½Ê½3
+// æ–¹å¼3
 var server3 = http.createServer(server3Process);
 
-// function»áÔ¤½âÊÍ£¬Ò²»á¸³Öµ
+// functionä¼šé¢„è§£é‡Šï¼Œä¹Ÿä¼šèµ‹å€¼
 function server3Process(req,res) {
     res.end("nice 3");
 }
 
-// http://127.0.0.1:8082/ ¿ÉÒÔ·ÃÎÊ
+// http://127.0.0.1:8082/ å¯ä»¥è®¿é—®
 server3.listen(8082,'127.0.0.1');
