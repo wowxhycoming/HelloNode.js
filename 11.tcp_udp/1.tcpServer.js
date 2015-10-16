@@ -2,12 +2,15 @@
  * Created by xuhuaiyu on 2015/10/14.
  */
 
+/**
+ * 功能描述，接收客户端连接，接收客户端数据，并保存到文件中
+ */
 var net = require('net');
 var fs = require('fs');
 var util = require('util');
 
-var count =0;
-var out = fs.createWriteStream('./tcp'+count+'.txt');
+var out = fs.createWriteStream('tcp1.txt');
+
 // 当socket关闭的时候，查看 WriteStream 的状态
 out.on('finish',function(){
     console.log('finished');
