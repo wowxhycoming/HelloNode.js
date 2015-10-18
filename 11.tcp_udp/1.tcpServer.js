@@ -36,12 +36,14 @@ server.on('connection', function(socket){
         socket.write("server:"+chunk);
     });*/
 
+    // 客户端发起end请求时触发
     socket.on('end',function(){
         console.log('end');
         //console.log('end out:',util.inspect(out, true));
         //console.log('end socket:',util.inspect(socket, true));
     });
 
+    // 不管何种原因，只要客户端关闭了，就会触发
     socket.on('close',function(){
         console.log('close');
     });

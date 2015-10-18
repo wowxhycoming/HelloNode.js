@@ -20,16 +20,32 @@ out.on('finish',function(){
 
 var server = net.createServer();
 
-server.on('connection', function(socket){
-    console.log('connected');
+// 保存所有连接上来的socket对象
+var sockets = [];
 
+server.on('connection', function(socket){
+
+    // unref() 不是立即关闭服务器，而是等待所有的客户端都断开了，才关闭。期间新客户端是可以连接的
+    setTimeout(function(){
+        server.unref();
+        console.log('unref');
+    }, 10000);
+
+    console.log('connected');
+    sockets.push(socket); // 保存socket
     socket.setEncoding('utf8');
 
     // 在写入文件之前，判断当前文件大小
-    var stat = fs.stat('tcp2_'+count+'.txt'); // 同步方法
-    if(stat.size > 10 * 1024) { //
+    // 用pipe无法实时监控文件大小，这种方式只能在新客户端连接上来后创建新文件；或者用 on data 事件来实现。
+    var stat = fs.statSync('tcp2_'+count+'.txt'); // 同步方法，知识为了代码方便
+    if(stat.size > 10) { //
         count++;
-        out = fs.createWriteStream('tcp2_'+count+'.txt');
+        console.log(count);
+        sockets.forEach(function(s){
+            s.unpipe(out); // 解绑原来输出流
+            out = fs.createWriteStream('tcp2_'+count+'.txt');
+            s.pipe(out,{end:false});// 指向新的输出流
+        });
     } else {
         socket.pipe(out, {end:false});
     }
@@ -38,14 +54,15 @@ server.on('connection', function(socket){
         console.log('end');
     });
 
-    socket.on('close',function(){
-        console.log('close');
+    socket.on('close',function(socket){
+        console.log('close',socket);
     });
 
-    socket.on('error',function(){
-        console.log('error');
+    socket.on('error',function(socket){
+        console.log('error',socket);
         socket.destroy();
     });
+
 });
 
 server.listen(9000);
