@@ -1,15 +1,13 @@
 /**
- * Created by xuhuaiyu on 2015/10/23.
+ * Created by xuhuaiyu on 2015/11/3.
  */
+
+
 var http = require("http");
 var domain = require('domain');
 
-var server = http.createServer(listener);
-var d = domain.create();
 
-d.on('error',function(err){
-    console.log(err);
-});
+var server = http.createServer(listener);
 
 function listenerImpl(request, response) {
     console.log("123");
@@ -19,8 +17,15 @@ function listenerImpl(request, response) {
         if (r > 5) {
             throw new Error("async: random num" + r + " > 5");
         }
-    },10);
+    },1);
 }
+
+var d = domain.create();
+
+d.on('error',function(err){
+    console.log(err);
+});
+
 
 function listener(request,response) {
     d.run(listenerImpl(request, response));
