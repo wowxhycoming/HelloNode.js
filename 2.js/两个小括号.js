@@ -28,12 +28,12 @@ var f = new Foo();
 // 20行的console.log(b)，当前小括号中没有变量b，则变成this.b；
 
 
-function Foo2() {     
-    var a = 123;     
-    this.a = 456;     
+function Foo2() {
+    var a = 123;
+    this.a = 456;
     (function() {
         console.log(a); // 123 
-        console.log(this.a); // undefined     
+        console.log(this.a); // undefined
     })(this.a);
 }
 var f2 = new Foo2();
