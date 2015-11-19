@@ -29,7 +29,7 @@ console.log(path.join(__dirname,'a','b'));
  */
 console.log(path.resolve());// 空代表当前的目录 路径
 console.log(path.resolve('a','c'));
-console.log(path.resolve('a','/c','/d'));// /a/b
+console.log(path.resolve('a','/c','/d'));// /d
 
 /**
  * 可以获取 两个路径 之间的相对关系
