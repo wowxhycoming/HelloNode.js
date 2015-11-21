@@ -15,4 +15,4 @@ console.log(os.freemem()); // 返回自由内存数
 console.log(os.networkInterfaces()); // 返回网络接口（网卡的名称/地址/IP等）
 console.log(os.EOL); // 返回系统换行符（如 '\n'）
 console.log(os.tmpdir()); //返回系统临时文件的文件夹
-console.log(os.endianness()); // 返回系统大小尾特征（如'LE')
+console.log(os.endianness()); // 返回 CPU 的字节序（如'LE')

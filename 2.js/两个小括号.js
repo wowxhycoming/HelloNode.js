@@ -29,17 +29,18 @@ var f = new Foo();
 
 
 function Foo2() {     
-    var a = 123;     
-    this.a = 456;     
+    var a = 123;
+    this.a = 456;
     (function() {
         console.log(a); // 123 
-        console.log(this.a); // undefined     
+        console.log(this.a); // undefined
     })(this.a);
 }
 var f2 = new Foo2();
 
 // 以上代码，先显示 123，再显示 undefined，说明 alert(this.a); 
 // 这句中 this 是指本 function 的，而不是其外部 function 的。如果要使用外部的成员，可使用参数的形式传入：
+// var a = 123; 和 this.a = 456; 都是定义在两个小括号之外的变量
 
 // 传参
 //var a = '000';
