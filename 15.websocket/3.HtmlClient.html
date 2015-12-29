@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!-- 编辑器直接调用浏览器启动访问 -->
+    <script>
+        var webSocketClient = new WebSocket("ws://127.0.0.1:8080/");
+        webSocketClient.onopen = function(){
+            console.log('connected to server');
+            webSocketClient.send('html client say hello');
+        };
+
+        webSocketClient.onmessage = function(event) {
+            console.log(event.data);
+        };
+    </script>
+</body>
+</html>
