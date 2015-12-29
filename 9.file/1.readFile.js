@@ -12,7 +12,7 @@ console.log(content);
 
 /**
  * 异步方式读取文件
- * 尽量使用异步的方式，只有要读取文件作为前置条件的时候
+ * 尽量使用异步的方式，只有当需要读取文件作为前置条件的时候才用同步读取
  */
 fs.readFile('msg.txt','utf8',function(err,data){
     console.log(err);
