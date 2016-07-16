@@ -28,7 +28,7 @@ var f = new Foo();
 // 20行的console.log(b)，当前小括号中没有变量b，则变成this.b；
 
 
-function Foo2() {     
+function Foo2() {
     var a = 123;
     this.a = 456;
     (function() {
