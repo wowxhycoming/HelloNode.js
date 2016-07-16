@@ -46,7 +46,7 @@ var f2 = new Foo2();
 //var a = '000';
 function Foo3() {
     (function() {
-        console.log(a); // 123  
+        console.log(a); // 123
     })(a = '1');
 }
 var f3 = new Foo3();
