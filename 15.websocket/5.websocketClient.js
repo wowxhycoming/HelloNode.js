@@ -7,11 +7,11 @@ var WebSocket = require('ws');
 var ws = new WebSocket('ws://127.0.0.1:8080/');
 
 ws.on('open', function() {
-    console.log('node client connected');
+    console.log('client : node client connected');
     ws.send('node client say hello');
 });
 
-ws.on('message', function(message) {
-    console.log(message.toString());
+ws.on('message', function(data) {
+    console.log('client : ' + data.toString());
 });
 
