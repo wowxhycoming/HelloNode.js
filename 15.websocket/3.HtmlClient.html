@@ -15,7 +15,7 @@
 
         // 监听服务器发送的消息
         webSocketClient.onmessage = function(event) {
-            console.log(event.data);
+            console.log('client : received=%s', event.data);
         };
     </script>
 </body>
