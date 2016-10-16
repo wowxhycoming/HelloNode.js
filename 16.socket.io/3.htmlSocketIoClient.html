@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.htmlSocketIoClient.html</title>
+</head>
+<body>
+
+</body>
+<!-- 用相对路径引入 socket.io -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('/');
+
+    socket.on('connect',function(){
+        console.log('连接成功');
+        socket.emit('message', 'html client say hello'); // socket.send('html client say hello');
+    });
+
+    socket.on('disconnect',function(){
+        console.log('断开连接');
+    });
+
+    socket.on('message',function(event){
+        console.log(event);
+    });
+
+</script>
+</html>

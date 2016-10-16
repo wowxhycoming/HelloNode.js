@@ -24,7 +24,7 @@ function MyWebSocketServer(options,callback){
     this._server = http.createServer(function(req,res){
         var upgrade = req.headers['upgrade'];
         if(upgrade){
-            // this.emit('abc');   // 什么情况
+            // this.emit('abc');   // 什么情况，也能用
         }else{
             res.end('over');
         }
