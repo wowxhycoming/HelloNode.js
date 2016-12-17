@@ -22,7 +22,7 @@ function ChangeDuplex(){
  */
 
 ChangeDuplex.prototype._read = function(){
-
+    // 维持原来的逻辑
 };
 
 ChangeDuplex.prototype._write = function(data){
@@ -34,10 +34,11 @@ ChangeDuplex.prototype._write = function(data){
 };
 
 var change = new ChangeDuplex();
+// 每次执行一个方法，查看效果
 // 原始文件 转 加密文件
 fs.createReadStream('origin-pwd.txt').pipe(change)
     .pipe(fs.createWriteStream('encrypt-pwd.txt'));
 
 // 加密文件 转 解密文件
 fs.createReadStream('encrypt-pwd.txt').pipe(change)
-    .pipe(fs.createWriteStream('decrypt-pwd.txt'));
+	.pipe(fs.createWriteStream('decrypt-pwd.txt'));
